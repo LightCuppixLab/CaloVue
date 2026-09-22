@@ -1,8 +1,8 @@
 # Privacy Policy for CaloVue
 
-Last updated: August 25, 2026
+Last updated: September 22, 2026
 
-This Privacy Policy explains how CaloVue (the “App”) processes and protects personal data. It applies to the iOS version of the App and is intended to provide the information required by the EU General Data Protection Regulation (“GDPR”).
+This Privacy Policy explains how CaloVue (the "App") processes and protects personal data. It applies to the iOS version of the App and is intended to provide the information required by the EU General Data Protection Regulation ("GDPR").
 
 ## 1. Data Controller
 
@@ -46,7 +46,7 @@ Please avoid entering sensitive personal information in food names or other free
 
 ### Meal photos, descriptions and AI analysis
 
-**Checks performed on your device first.** Before a meal photo is used for analysis, Apple frameworks examine it locally on your device: Vision checks for faces, Apple’s Sensitive Content Analysis checks for sensitive imagery where that policy is active, and an on-device Apple model checks that the image actually shows food. A photo rejected by any of these checks is never transmitted anywhere and never reaches an AI provider.
+**Checks performed on your device first.** Before a meal photo is used for analysis, Apple frameworks examine it locally on your device: Vision checks for faces, Apple's Sensitive Content Analysis checks for sensitive imagery where that policy is active, and an on-device Apple model checks that the image actually shows food. A photo rejected by any of these checks is never transmitted anywhere and never reaches an AI provider.
 
 **Photo analysis.** If the photo passes those checks and you start the analysis, the photo is transmitted over an encrypted connection to our authenticated server function, which forwards it to our AI provider, Anthropic, to produce the nutritional estimate. The photo is held only in memory for the duration of that request. CaloVue does not save the meal photo in its database or in remote file storage, and does not keep a server-side copy after the request completes.
 
@@ -56,15 +56,15 @@ Please avoid entering sensitive personal information in food names or other free
 
 **Nutrition label reading.** In this mode the photo of the printed nutrition table, the reading of it and the AI step all remain on your device, using Apple Foundation Models. Nothing is sent to Anthropic.
 
-**About the AI provider.** Anthropic acts as a processor on our behalf under its commercial terms. Under those terms, inputs and outputs sent through the API are not used to train Anthropic’s models. Anthropic may retain the content of a request for a limited period for security and abuse-monitoring purposes, under its own documented retention practices, after which it is deleted. We do not send your CaloVue account identifier, email address or name to Anthropic.
+**About the AI provider.** Anthropic acts as a processor on our behalf under its commercial terms. Under those terms, inputs and outputs sent through the API are not used to train Anthropic's models. Anthropic may retain the content of a request for a limited period for security and abuse-monitoring purposes, under its own documented retention practices, after which it is deleted. We do not send your CaloVue account identifier, email address or name to Anthropic.
 
-**What stays on your device.** After a successful analysis, CaloVue may store a reduced meal thumbnail on your device for Home and History. “Before & after” progress photos are also stored only on your device. If you choose to share a result or progress image, iOS sends it only to the destination you select.
+**What stays on your device.** After a successful analysis, CaloVue may store a reduced meal thumbnail on your device for Home and History. "Before & after" progress photos are also stored only on your device. If you choose to share a result or progress image, iOS sends it only to the destination you select.
 
 Please do not photograph people, documents or other sensitive subjects for analysis, and avoid including personal information in the written description.
 
 ### Body-weight data
 
-Body-weight values and dates entered manually are stored on your device for progress charts and Insights. If you explicitly authorize it, CaloVue reads your latest body-mass measurement from Apple Health and stores the imported value locally. CaloVue does not write data to Apple Health, use Health data for advertising or sell it. You can deny or revoke Health access in iOS Settings.
+Body-weight values and dates are entered by you and are stored only on your device, where they are used for progress charts and Insights. CaloVue does not read from or write to Apple Health, does not request Health permissions and does not use body-weight data for advertising or sell it. Body-weight values are not sent to our servers.
 
 ### Usage and security records
 
@@ -86,7 +86,7 @@ Your language, measurement units, notification preferences, display name and oth
 
 ## 4. Data We Do Not Use
 
-CaloVue does not use advertising SDKs, third-party analytics SDKs or cross-app tracking. We do not sell personal data. We do not use your photos, meal records, corrections or body-weight data to train AI models, our own or anyone else’s, and our AI provider’s terms prohibit using the content of our requests to train its models. We do not collect contacts, precise location or advertising identifiers.
+CaloVue does not use advertising SDKs, third-party analytics SDKs or cross-app tracking. We do not sell personal data. We do not use your photos, meal records, corrections or body-weight data to train AI models, our own or anyone else's, and our AI provider's terms prohibit using the content of our requests to train its models. We do not collect contacts, precise location or advertising identifiers.
 
 ## 5. Why We Process Data and Our Legal Bases
 
@@ -97,9 +97,9 @@ Under Article 6 GDPR, we rely on:
 - **Legal obligations (Article 6(1)(c))** where processing is required by applicable law.
 - **Consent (Article 6(1)(a))** for optional permissions and actions where consent is the appropriate basis.
 
-If CaloVue reads body-mass data from Apple Health, we rely on your explicit permission and, where the data qualifies as health data, your explicit consent under Article 9(2)(a) GDPR. You can refuse or withdraw that permission without losing the manual body-weight feature.
+Body-weight values you enter are processed only on your device and are not transmitted to us, so they are not part of the processing described above. CaloVue does not access Apple Health and therefore does not process health data obtained from it.
 
-The App’s automated analysis produces informational estimates only. It does not make decisions that produce legal effects or similarly significant effects about you.
+The App's automated analysis produces informational estimates only. It does not make decisions that produce legal effects or similarly significant effects about you.
 
 ## 6. Where Data Is Stored and Who Processes It
 
@@ -107,7 +107,7 @@ The App’s automated analysis produces informational estimates only. It does no
 - **Anthropic** provides the AI models that analyze meal photos and written descriptions, as described in Section 3. It receives the photo or description transiently for the duration of the request and does not receive your account identifier, email address or name.
 - **Apple** provides Sign in with Apple, on-device system frameworks, Apple Foundation Models used for the on-device checks and the nutrition label reading, and App Store purchase processing.
 
-Meal thumbnails, local body-weight history, progress photos and preferences remain in the App’s local storage. Depending on your iPhone and backup settings, local App data may be included in a device backup managed by Apple.
+Meal thumbnails, local body-weight history, progress photos and preferences remain in the App's local storage. Depending on your iPhone and backup settings, local App data may be included in a device backup managed by Apple.
 
 We may disclose data when required by law or when necessary to establish, exercise or defend legal claims. We do not disclose your data to advertisers or data brokers.
 
@@ -121,13 +121,17 @@ Structured account, meal, correction, subscription and minimal request records a
 
 Meal photos and written descriptions sent for analysis are not retained by CaloVue after the request completes. Our AI provider may retain the content of a request for a limited period for security and abuse-monitoring purposes under its own documented practices, after which it is deleted.
 
-Local thumbnails, progress photos, body-weight history and preferences remain on your device until you remove them, delete your CaloVue account using the App’s deletion flow, or uninstall the App. Copies contained in a device backup remain subject to your Apple backup settings and Apple’s retention practices.
+Local meal thumbnails, body-weight history and preferences remain on your device until you remove them, delete your CaloVue account using the App's deletion flow, or uninstall the App.
 
-When active database data is deleted, residual copies may remain temporarily in encrypted provider backups until the applicable backup rotation expires. They are not used for normal product operation and are removed according to the hosting provider’s configured backup schedule.
+"Before & after" progress photos are handled differently: they are stored only on your device, and the in-App account deletion flow does not currently remove them. You can delete an individual progress photo inside the App at any time, and uninstalling CaloVue removes all of them together with the App's local storage.
+
+Copies contained in a device backup remain subject to your Apple backup settings and Apple's retention practices.
+
+When active database data is deleted, residual copies may remain temporarily in encrypted provider backups until the applicable backup rotation expires. They are not used for normal product operation and are removed according to the hosting provider's configured backup schedule.
 
 ## 9. Account and Data Deletion
 
-You can choose **Profile → Delete CaloVue Account**. After confirmation, CaloVue deletes your authentication account and the server records linked to it, including profiles, meals, food items, corrections, subscription entitlement records and minimal request records. The App also clears App-managed local data covered by the deletion flow. The action is permanent and cannot be undone.
+You can choose **Profile → Delete CaloVue Account**. After confirmation, CaloVue deletes your authentication account and the server records linked to it, including profiles, meals, food items, corrections, subscription entitlement records and minimal request records. The App also clears the App-managed local data covered by the deletion flow, including saved meal thumbnails and locally stored preferences. The deletion flow does not currently remove "Before & after" progress photos from your device; you can delete those individually inside the App, or remove them all by uninstalling CaloVue. The action is permanent and cannot be undone.
 
 Deleting your CaloVue account does not delete your Apple Account and does not automatically cancel an App Store subscription. Subscriptions must be managed separately in your App Store account settings.
 
@@ -149,7 +153,7 @@ You may edit supported meal information directly in the App or contact us at lig
 
 ## 11. Security
 
-We use encrypted network connections, authenticated server functions, database row-level security and access controls designed to keep each account’s data separate. Meal photos and descriptions sent for analysis travel over encrypted connections through our authenticated server function, are processed transiently and are not stored by CaloVue. On-device checks run before any photo is transmitted, and the nutrition label mode keeps its analysis entirely on your device. No system can guarantee absolute security.
+We use encrypted network connections, authenticated server functions, database row-level security and access controls designed to keep each account's data separate. Meal photos and descriptions sent for analysis travel over encrypted connections through our authenticated server function, are processed transiently and are not stored by CaloVue. On-device checks run before any photo is transmitted, and the nutrition label mode keeps its analysis entirely on your device. No system can guarantee absolute security.
 
 ## 12. Children
 
@@ -157,7 +161,7 @@ CaloVue is not intended for children under 16, and we do not knowingly collect p
 
 ## 13. Changes to This Policy
 
-We may update this Privacy Policy when the App, providers or legal requirements change. Material changes will be communicated in the App or by another appropriate method, and the “Last updated” date will be revised.
+We may update this Privacy Policy when the App, providers or legal requirements change. Material changes will be communicated in the App or by another appropriate method, and the "Last updated" date will be revised.
 
 ## 14. Contact
 
