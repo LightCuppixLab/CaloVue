@@ -1,140 +1,171 @@
-<!--
-BEFORE PUBLICATION:
-1. Obtain legal review and publish these Terms at a stable public URL.
-2. Confirm the final StoreKit product IDs, trial configuration and features.
-3. Ensure the App links to these Terms and the Privacy Policy from the paywall and Settings.
--->
+# Privacy Policy for CaloVue
 
-# Terms of Service for CaloVue
+Last updated: September 22, 2026
 
-Last updated: August 4, 2026
+This Privacy Policy explains how CaloVue (the "App") processes and protects personal data. It applies to the iOS version of the App and is intended to provide the information required by the EU General Data Protection Regulation ("GDPR").
 
-## 1. Acceptance of Terms
+## 1. Data Controller
 
-By downloading, accessing or using CaloVue (the “App”), you agree to these Terms of Service and the CaloVue Privacy Policy. If you do not agree, do not use the App.
+The data controller is Light Cup Pix Lab, Padova, Italy, the studio that develops CaloVue.
 
-The App is provided by Light Cup Pix Lab, Padova, Italy (“we”, “us” or “our”). The license to use the App is also subject to Apple’s applicable App Store terms and, unless a custom end-user license agreement is provided through the App Store, Apple’s Standard Licensed Application End User License Agreement.
+Contact: lightcuppixlab.dev@gmail.com
 
-## 2. The Service
+## 2. What CaloVue Does
 
-CaloVue is a personal food-recording and educational tool. It can use a meal photo, a user-supplied portion weight and optional preparation details to estimate foods, quantities, calories and macronutrients. It can also save meal history, show descriptive Insights and help you record body-weight progress.
+CaloVue helps you record meals, estimate foods, portions, calories and macronutrients, review meal history and track body weight. Results are estimates and are not medical advice.
 
-The App uses Apple Foundation Models on a compatible device to generate estimates. Features may be added, changed, suspended or removed over time. Some features require internet access, an active CaloVue account, a compatible version of iOS, supported Apple Intelligence hardware and Apple Intelligence enabled and available.
+CaloVue offers three ways to record a meal, and they do not process data in the same way:
 
-## 3. Nutrition and AI Estimates
+- **Photo analysis** and **written description** send your input to an external AI provider for analysis, as described in Section 3.
+- **Nutrition label reading** runs entirely on your device using Apple Foundation Models. Nothing about that analysis is sent to an external AI provider.
 
-CaloVue’s food recognition, portion estimates, calorie values, nutrient values, scores, ratings, warnings and Insights are estimates and may be incomplete, inaccurate or unsuitable for your circumstances. Accuracy can be affected by mixed dishes, hidden ingredients, sauces, cooking methods, image quality and portion visibility.
+Section 3 explains exactly what leaves your device in each case.
 
-CaloVue is not a medical device and does not provide medical, nutritional, diagnostic or treatment advice. It does not replace a doctor, registered dietitian or other qualified professional. Do not rely on the App for:
+## 3. Data We Process
 
-- allergy or intolerance safety;
-- medication, insulin or supplement decisions;
-- diagnosis, treatment or prevention of a condition;
-- eating-disorder treatment or urgent health needs;
-- a prescribed diet or clinically required nutrient calculation.
+We process only the data needed to provide and secure the App.
 
-Always verify foods, quantities and estimates before relying on them. Seek qualified professional advice for personal medical or dietary needs. In an emergency, contact the appropriate emergency service.
+### Account and authentication
 
-## 4. Your Account
+CaloVue uses Sign in with Apple. The App does not request your name or email address from Apple. Supabase Auth receives the Apple authentication token and provider identifier needed to create and maintain your account and assigns a CaloVue user ID. If Apple or Supabase includes additional technical authentication information as part of the sign-in process, it is processed only for authentication and account security.
 
-CaloVue uses Sign in with Apple. You are responsible for maintaining control of your Apple Account and device and for activity performed through your CaloVue account.
+The display name you choose inside CaloVue is stored only on your device and is not requested from Apple or saved in your CaloVue server profile.
 
-You can delete your account in **Profile → Delete CaloVue Account**. Account deletion is permanent and removes the CaloVue authentication identity and associated server data. It does not delete your Apple Account and does not cancel an App Store subscription.
+### Meal and nutrition records
 
-## 5. Acceptable Use
+When an analysis is saved, Supabase receives the structured result, including:
 
-You agree not to:
+- meal and food names;
+- meal date and time;
+- food and total portion weights;
+- estimated calories, protein, carbohydrates and fat;
+- estimated score, rating, confidence, warnings and descriptive summary;
+- corrections you make to food names or weights and related revision information.
 
-- use the App for unlawful, fraudulent or abusive purposes;
-- attempt to access another person’s account or data;
-- bypass Free limits, Premium restrictions, authentication, safety checks or other technical protections;
-- interfere with, overload, reverse engineer or disrupt the App or its backend, except where applicable law expressly permits it;
-- submit photos of other people, unlawful content or content you do not have the right to process;
-- use the App to make high-risk medical decisions or misrepresent estimates as professionally verified facts.
+Please avoid entering sensitive personal information in food names or other free-text fields.
 
-We may restrict or terminate access where reasonably necessary to address a serious or repeated violation, security risk, fraud, abuse or legal requirement.
+### Meal photos, descriptions and AI analysis
 
-## 6. Your Content
+**Checks performed on your device first.** Before a meal photo is used for analysis, Apple frameworks examine it locally on your device: Vision checks for faces, Apple's Sensitive Content Analysis checks for sensitive imagery where that policy is active, and an on-device Apple model checks that the image actually shows food. A photo rejected by any of these checks is never transmitted anywhere and never reaches an AI provider.
 
-You remain responsible for photos, notes, food names, weights and other information you provide. You confirm that you have the right to use that content with the App.
+**Photo analysis.** If the photo passes those checks and you start the analysis, the photo is transmitted over an encrypted connection to our authenticated server function, which forwards it to our AI provider, Anthropic, to produce the nutritional estimate. The photo is held only in memory for the duration of that request. CaloVue does not save the meal photo in its database or in remote file storage, and does not keep a server-side copy after the request completes.
 
-You authorize CaloVue to process your content only as needed to provide the requested features, synchronize structured meal records, maintain your history and secure the service. Meal photos and optional preparation notes used for AI analysis remain on your device; structured analysis results are stored in the CaloVue backend as described in the Privacy Policy.
+**Written description.** In the text mode, the short description you type — currently limited to 120 characters — together with the portion weight is transmitted the same way, through our authenticated server function to Anthropic. No photo is involved.
 
-The App may allow you to share a meal or progress image using the iOS sharing interface. You choose the recipient or third-party service and are responsible for reviewing the content before sharing it.
+**Re-analysis.** When you ask CaloVue to recalculate a meal you already saved, only the stored food names and weights for that meal are sent. No photo is sent.
 
-## 7. Free and Premium Features
+**Nutrition label reading.** In this mode the photo of the printed nutrition table, the reading of it and the AI step all remain on your device, using Apple Foundation Models. Nothing is sent to Anthropic.
 
-CaloVue may offer a Free tier and an optional auto-renewable subscription called **CaloVue Premium**.
+**About the AI provider.** Anthropic acts as a processor on our behalf under its commercial terms. Under those terms, inputs and outputs sent through the API are not used to train Anthropic's models. Anthropic may retain the content of a request for a limited period for security and abuse-monitoring purposes, under its own documented retention practices, after which it is deleted. We do not send your CaloVue account identifier, email address or name to Anthropic.
 
-Under the current product rules:
+**What stays on your device.** After a successful analysis, CaloVue may store a reduced meal thumbnail on your device for Home and History. "Before & after" progress photos are also stored only on your device. If you choose to share a result or progress image, iOS sends it only to the destination you select.
 
-- Free accounts can save up to two successful new photo analyses per UTC day and can use the available body-weight tracking features.
-- Premium accounts receive unlimited photo analyses, full access to Premium Insights and any CSV export or PDF report features identified as included in the purchase screen.
-- Text-only reanalysis of an already saved meal does not currently count against the Free daily photo limit.
+Please do not photograph people, documents or other sensitive subjects for analysis, and avoid including personal information in the written description.
 
-Limits reset according to the server’s UTC clock. We may update reasonable feature limits prospectively. The exact features, price, billing period and any offer presented in the App at the time of purchase form part of these Terms.
+### Body-weight data
 
-## 8. Subscription Billing
+Body-weight values and dates are entered by you and are stored only on your device, where they are used for progress charts and Insights. CaloVue does not read from or write to Apple Health, does not request Health permissions and does not use body-weight data for advertising or sell it. Body-weight values are not sent to our servers.
 
-CaloVue Premium may be offered as a monthly plan and a yearly plan. Purchases are processed and billed by Apple through the App Store under Apple’s terms.
+### Usage and security records
 
-By subscribing, you acknowledge that:
+For each saved analysis, Supabase stores a minimal record containing your user ID, a random request ID, the operation type, an optional meal ID and a timestamp. This supports idempotency and service security. It does not contain the photo, description, AI prompt or raw AI response.
 
-- the localized price and subscription period are shown before confirmation;
-- payment is charged to your Apple Account when you confirm the purchase;
-- the subscription automatically renews for the selected period unless you turn off automatic renewal at least 24 hours before the current period ends;
-- Apple may charge the renewal within the 24 hours before the current period ends;
-- you can manage or cancel the subscription in your App Store account settings;
-- deleting the App or your CaloVue account does not cancel the subscription;
-- price changes are handled under Apple’s notice and consent rules and applicable law.
+Separately, each request forwarded to the AI provider is recorded in a restricted server-side ledger containing your user ID, a random request ID, the operation type, its status and timestamps. This ledger enforces the daily allowance described below and lets us refund an attempt that failed for technical reasons. It does not contain the photo, description, AI prompt or raw AI response.
 
-Where a seven-day introductory free trial is offered, it is available only when Apple confirms your eligibility and displays the offer before purchase. If you do not cancel at least 24 hours before the trial ends, it converts to the paid subscription shown at confirmation. Introductory-offer eligibility is controlled by Apple and may generally be used only once within the subscription group.
+These records support the current usage model: nutrition label reading is free and unlimited because it runs on your device, while photo analysis, written description and re-analysis require a Premium subscription and share a limit of six attempts per UTC day. A photo rejected by the on-device checks does not consume that allowance.
 
-Except where applicable law requires otherwise, refund requests are handled by Apple under its policies. We do not receive or store your payment card or other payment instrument data.
+Our hosting, authentication and AI providers may also process standard technical logs, such as IP address, request time and error or security metadata, under their own documented retention and security practices.
 
-## 9. Availability and Device Requirements
+### Subscription data
 
-We aim to keep CaloVue available but do not guarantee uninterrupted or error-free operation. Network services, Supabase, Sign in with Apple, the App Store, Apple Intelligence or system frameworks may be unavailable or may change independently of us.
+If you purchase CaloVue Premium, we process the subscription status and non-financial identifiers needed to unlock features, such as product ID, original transaction identifier, environment and renewal or expiry date. We do not receive or store your payment card or other payment instrument data.
 
-AI meal analysis requires a compatible device, supported operating-system version, available on-device model and Apple Intelligence enabled. Purchasing Premium does not make an unsupported device compatible. Check the requirements shown in the App before purchasing.
+### Preferences stored on the device
 
-We may perform maintenance, correct security issues, change features or discontinue all or part of the service. Where practicable and legally required, we will provide reasonable notice of a material discontinuation.
+Your language, measurement units, notification preferences, display name and other interface settings are stored locally on your device.
 
-## 10. Intellectual Property
+## 4. Data We Do Not Use
 
-The App, brand, interface, software and original content provided by CaloVue are owned by or licensed to Light Cup Pix Lab and are protected by applicable intellectual-property laws. These Terms grant you a personal, limited, non-exclusive, non-transferable and revocable right to use the App for its intended purpose, subject to Apple’s applicable usage rules.
+CaloVue does not use advertising SDKs, third-party analytics SDKs or cross-app tracking. We do not sell personal data. We do not use your photos, meal records, corrections or body-weight data to train AI models, our own or anyone else's, and our AI provider's terms prohibit using the content of our requests to train its models. We do not collect contacts, precise location or advertising identifiers.
 
-## 11. Third-Party Services
+## 5. Why We Process Data and Our Legal Bases
 
-CaloVue relies on services provided by Apple and Supabase. Your use of Apple services, including Sign in with Apple, Apple Intelligence and App Store purchases, is also governed by Apple’s terms and privacy policies. Third-party services may change, be interrupted or become unavailable.
+Under Article 6 GDPR, we rely on:
 
-## 12. Disclaimer of Warranties
+- **Performance of a contract (Article 6(1)(b))** to create and manage your account, analyze the meal photos and descriptions you submit, save and synchronize meal records, apply usage limits and provide Premium features.
+- **Legitimate interests (Article 6(1)(f))** to protect accounts, prevent abuse, maintain idempotency, diagnose failures and keep the service secure. We use data-minimized records for these purposes.
+- **Legal obligations (Article 6(1)(c))** where processing is required by applicable law.
+- **Consent (Article 6(1)(a))** for optional permissions and actions where consent is the appropriate basis.
 
-To the extent permitted by applicable law, CaloVue is provided “as is” and “as available”. We do not warrant that estimates will be accurate, that the App will meet every individual need or that access will always be uninterrupted. Nothing in these Terms excludes statutory warranties or consumer rights that cannot lawfully be excluded.
+Body-weight values you enter are processed only on your device and are not transmitted to us, so they are not part of the processing described above. CaloVue does not access Apple Health and therefore does not process health data obtained from it.
 
-## 13. Limitation of Liability
+The App's automated analysis produces informational estimates only. It does not make decisions that produce legal effects or similarly significant effects about you.
 
-To the extent permitted by applicable law, Light Cup Pix Lab is not liable for indirect, incidental or consequential loss arising from use of or inability to use the App, including loss caused by inaccurate meal, calorie, nutrient, score or weight information.
+## 6. Where Data Is Stored and Who Processes It
 
-Nothing in these Terms limits liability for fraud, wilful misconduct, death or personal injury caused by negligence, or any other liability that cannot be excluded or limited under applicable law. Your mandatory consumer rights remain unaffected.
+- **Supabase** provides authentication, database, server functions and related infrastructure for account and structured meal data.
+- **Anthropic** provides the AI models that analyze meal photos and written descriptions, as described in Section 3. It receives the photo or description transiently for the duration of the request and does not receive your account identifier, email address or name.
+- **Apple** provides Sign in with Apple, on-device system frameworks, Apple Foundation Models used for the on-device checks and the nutrition label reading, and App Store purchase processing.
 
-## 14. Suspension and Termination
+Meal thumbnails, local body-weight history, progress photos and preferences remain in the App's local storage. Depending on your iPhone and backup settings, local App data may be included in a device backup managed by Apple.
 
-You may stop using the App at any time and may delete your CaloVue account. We may suspend or terminate access for a serious or repeated breach of these Terms, fraud, abuse, a security threat or where required by law. Where appropriate, we will provide notice and a reasonable opportunity to address the issue.
+We may disclose data when required by law or when necessary to establish, exercise or defend legal claims. We do not disclose your data to advertisers or data brokers.
 
-Termination of your CaloVue account does not itself cancel billing managed by Apple. You must separately cancel an active subscription through the App Store.
+## 7. International Transfers
 
-## 15. Changes to These Terms
+Supabase, Anthropic and Apple may process limited data in countries outside the European Economic Area, including the United States. Where GDPR requires safeguards for a transfer, we rely on applicable adequacy decisions, Standard Contractual Clauses or another lawful transfer mechanism provided through the relevant service agreement. You may contact us for further information about applicable safeguards.
 
-We may update these Terms when the App, subscriptions, providers or legal requirements change. Material changes will be communicated in the App or by another appropriate method. The “Last updated” date will be revised. If applicable law requires consent to a change, we will request it.
+## 8. Retention
 
-## 16. Governing Law and Consumers
+Structured account, meal, correction, subscription and minimal request records are retained while your CaloVue account remains active, unless a shorter period is required for a specific record or longer retention is required by law.
 
-These Terms are governed by Italian law, without depriving consumers of mandatory protections under the law of their country of residence. If you are a consumer, you may bring proceedings before the courts available under applicable consumer-protection law, including the courts of your place of residence where required.
+Meal photos and written descriptions sent for analysis are not retained by CaloVue after the request completes. Our AI provider may retain the content of a request for a limited period for security and abuse-monitoring purposes under its own documented practices, after which it is deleted.
 
-## 17. Contact
+Local meal thumbnails, body-weight history and preferences remain on your device until you remove them, delete your CaloVue account using the App's deletion flow, or uninstall the App.
 
-For support or questions about these Terms, contact:
+"Before & after" progress photos are handled differently: they are stored only on your device, and the in-App account deletion flow does not currently remove them. You can delete an individual progress photo inside the App at any time, and uninstalling CaloVue removes all of them together with the App's local storage.
+
+Copies contained in a device backup remain subject to your Apple backup settings and Apple's retention practices.
+
+When active database data is deleted, residual copies may remain temporarily in encrypted provider backups until the applicable backup rotation expires. They are not used for normal product operation and are removed according to the hosting provider's configured backup schedule.
+
+## 9. Account and Data Deletion
+
+You can choose **Profile → Delete CaloVue Account**. After confirmation, CaloVue deletes your authentication account and the server records linked to it, including profiles, meals, food items, corrections, subscription entitlement records and minimal request records. The App also clears the App-managed local data covered by the deletion flow, including saved meal thumbnails and locally stored preferences. The deletion flow does not currently remove "Before & after" progress photos from your device; you can delete those individually inside the App, or remove them all by uninstalling CaloVue. The action is permanent and cannot be undone.
+
+Deleting your CaloVue account does not delete your Apple Account and does not automatically cancel an App Store subscription. Subscriptions must be managed separately in your App Store account settings.
+
+You may also request deletion by contacting lightcuppixlab.dev@gmail.com.
+
+## 10. Your GDPR Rights
+
+Subject to applicable law, you may request:
+
+- access to your personal data;
+- correction of inaccurate data;
+- deletion of your data;
+- restriction of processing;
+- objection to processing based on legitimate interests;
+- portability of data you provided;
+- withdrawal of consent at any time, without affecting earlier lawful processing.
+
+You may edit supported meal information directly in the App or contact us at lightcuppixlab.dev@gmail.com. We may need to verify that a request relates to your account. You also have the right to lodge a complaint with the Italian Data Protection Authority or the supervisory authority in your country of residence.
+
+## 11. Security
+
+We use encrypted network connections, authenticated server functions, database row-level security and access controls designed to keep each account's data separate. Meal photos and descriptions sent for analysis travel over encrypted connections through our authenticated server function, are processed transiently and are not stored by CaloVue. On-device checks run before any photo is transmitted, and the nutrition label mode keeps its analysis entirely on your device. No system can guarantee absolute security.
+
+## 12. Children
+
+CaloVue is not intended for children under 16, and we do not knowingly collect personal data from children under 16. If you believe a child has provided data, contact us so that we can review and delete it where appropriate.
+
+## 13. Changes to This Policy
+
+We may update this Privacy Policy when the App, providers or legal requirements change. Material changes will be communicated in the App or by another appropriate method, and the "Last updated" date will be revised.
+
+## 14. Contact
+
+For privacy questions or to exercise your rights, contact:
 
 Light Cup Pix Lab  
 Padova, Italy  
